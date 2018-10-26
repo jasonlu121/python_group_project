@@ -9,7 +9,7 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: white;
+    background-color: hsl(0, 10%, 89%)
 }
 
 h1 {
@@ -59,7 +59,7 @@ h6 {
 
 .result_bar {
     position: absolute;
-    top: 15%;
+    top: 14%;
     left: 15%;
     right: 0;
     width: 70%;
@@ -67,12 +67,11 @@ h6 {
     border-radius: 20px;
     border: 3px solid #374785;
     background: #374785;
+    text-align: center;
 }
 
 h3 {
-    position: absolute;
-    left: 1%;
-    bottom: 10%;
+    margin: 0 0 10% 0;
     font-size: 38px;
     height: auto;
     width: auto;
@@ -92,6 +91,7 @@ h4 {
 a {
     color: white;
     transition: ease .3s;
+    
 }
 
 a:hover {
@@ -100,7 +100,7 @@ a:hover {
 
 #map {
     position: absolute;
-    top: 27%;
+    top: 26%;
     left: 15%;
     right: 0;
     width: 34%;
@@ -112,7 +112,7 @@ a:hover {
 
 .photo_block {
     position: absolute;
-    top: 27%;
+    top: 26%;
     left: 51%;
     right: 0;
     width: 34%;
@@ -160,4 +160,67 @@ img {
 .navbar button:hover {
     background: #374785;
     color: #ffffff;
+}
+
+.roulette {
+    position: relative;
+    z-index: 1;
+    font-size: 1em;
+    width: 5em;
+    top: 102%;
+    left: 71.5%;
+    margin-top: -25em;
+    margin-left: -25em;
+}
+
+.button {
+    display: inline-block;
+    text-align: center;
+    font-weight: 800;
+    background: #E85A4F;
+    position: absolute;
+    z-index: 999;
+    border-radius: 100%;
+    border: none;
+    box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+    color: white;
+    text-decoration: wavy;
+    cursor: pointer;
+    letter-spacing: -0.05em;
+    transition: ease .5s;
+    opacity:0.95;
+    -webkit-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    transform: scale(0.5);
+}
+
+.button:hover,
+.button:active {
+    color: #FAED26;
+    background: #374785;
+    opacity:1;
+    -webkit-transform: scale(1.0);
+    -ms-transform: scale(1.0);
+    transform: scale(1.0);
+}
+
+.button-spin {
+    width: 10em;
+    height: 10em;
+    line-height: 10em;
+    top: 83%;
+    left: 50%;
+    margin-left: -5em;
+    margin-top: -10em;
+    font-weight: 800;
+    z-index: 998;
+}
+
+.button-spin:active {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+}
+
+.button-spin span {
+    font-size: 1.6em;
 }
