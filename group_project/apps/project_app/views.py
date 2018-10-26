@@ -68,6 +68,12 @@ def wheel(request):
         request.session['city'] = "Seattle"
     if 'state' not in request.session:
         request.session['state'] = "WA"
+    if 'glutenfree' not in request.session:
+        request.session['glutenfree'] = None
+    if 'vegetarian' not in request.session:
+        request.session['vegetarian'] = None
+    if 'vegan' not in request.session:
+        request.session['vegan'] = None
     return render(request, "project_app/wheel.html")
 
 def process_wheel(request):
@@ -81,15 +87,15 @@ def preferences(request):
     if 'price' not in request.session:
         request.session['price'] = ""
     if 'city' not in request.session:
-        request.session['city'] = ""    
+        request.session['city'] = ""
     if 'state' not in request.session:
-        request.session['state'] = "" 
+        request.session['state'] = ""
     if 'glutenfree' not in request.session:
-        request.session['glutenfree'] = ""  
+        request.session['glutenfree'] = ""
     if 'vegetarian' not in request.session:
-        request.session['vegetarian'] = ""  
+        request.session['vegetarian'] = ""
     if 'vegan' not in request.session:
-        request.session['vegan'] = ""  
+        request.session['vegan'] = ""
     return render(request, "project_app/preferences.html")
 
 def process_preferences(request):
@@ -105,17 +111,17 @@ def process_preferences(request):
 
 def process_advanced_preferences(request):
     if request.POST.get("gluten", False):
-        request.session['glutenfree'] = ""
+        request.session['glutenfree'] = None
     else:
         request.session['glutenfree'] = "gluten free"
     
     if request.POST.get("vegetarian", False):
-        request.session['vegetarian'] = ""
+        request.session['vegetarian'] = None
     else:
         request.session['vegetarian'] = "vegetarian"
     
     if request.POST.get("vegan", False):
-        request.session['vegan'] = ""
+        request.session['vegan'] = None
     else:
         request.session['vegan'] = "vegan"
     return redirect('/preferences')
@@ -127,13 +133,18 @@ def results(request):
     category = f'term={request.session["category"]},{request.session["glutenfree"]},{request.session["vegitarian"]},{request.session["advanced_Search"]}'
 =======
     category = f'term={request.session["category"]},{request.session["glutenfree"]},{request.session["vegetarian"]},{request.session["vegan"]}'
+<<<<<<< HEAD
     opennow = 'open_now=true'
 >>>>>>> upstream/develop
+=======
+    opennow = 'open_now=False'
+>>>>>>> upstream/frontend
     location = f'location={request.session["city"]},{request.session["state"]}'
     pricepoint = f'price={request.session["price"]}'
     limit = 'limit=30'
     rating = 'sort_by=rating'
     radius = f'radius={x}'
+<<<<<<< HEAD
 <<<<<<< HEAD
     attribute = f'attributes=hot_and_new,{request.session["takesreservation"]}'
 =======
@@ -141,12 +152,17 @@ def results(request):
 >>>>>>> upstream/develop
     hotnew_term = ' term=restaurant'
     opennow = 'open_now=true'
+=======
+    # attribute = f'attributes=hot_and_new'
+    # hotnew_term = ' term=restaurant'
+>>>>>>> upstream/frontend
     response = requests.get(URL + '?{}&{}&{}&{}&{}&{}&{}'.format(category, location, pricepoint, limit, rating, radius, opennow), headers = header)
     business = response.json()
     result = json.dumps(business, sort_keys=True, indent=4)
     restdict = json.loads(result)
 ###########################################################################################################################
     # this is top 10 restaurants in your area part
+<<<<<<< HEAD
 <<<<<<< HEAD
     response2 = requests.get(URL + '?{}&{}&{}&{}&{}&{}&{}'.format(hotnew_term, location, limit, rating, radius, attribute), headers = header)
 =======
@@ -155,6 +171,12 @@ def results(request):
     business2 = response2.json()
     result2 = json.dumps(business2, sort_keys=True, indent=4)
     restdict2 = json.loads(result2)
+=======
+    # response2 = requests.get(URL + '?{}&{}&{}&{}&{}&{}'.format(hotnew_term, location, limit, rating, radius, attribute), headers = header)
+    # business2 = response2.json()
+    # result2 = json.dumps(business2, sort_keys=True, indent=4)
+    # restdict2 = json.loads(result2)
+>>>>>>> upstream/frontend
     # end of top 10 restaurant part
 
 
